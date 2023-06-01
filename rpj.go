@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"os"
 )
@@ -18,16 +19,12 @@ var fieldMap = map[string]string{
 }
 
 func main() {
-	var isVerbose bool
-	for _, arg := range os.Args {
-		if arg == "--verbose" {
-			isVerbose = true
-		}
-	}
+	verbosePointer := flag.Bool("verbose", false, "Prints errors to the console")
+	flag.Parse()
 
 	handleError := func(err error, message string) {
 		if err != nil {
-			if isVerbose {
+			if *verbosePointer {
 				fmt.Println(err)
 			}
 			fmt.Println(message)
@@ -42,9 +39,10 @@ func main() {
 	handleError(json.Unmarshal(byteArray, &contents), "Invalid package.json file")
 
 	var field string
+	args := flag.Args()
 
-	if len(os.Args) > 1 {
-		field = os.Args[1]
+	if len(args) > 0 {
+		field = args[0]
 	} else {
 		field = "scripts"
 	}
