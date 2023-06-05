@@ -1,0 +1,19 @@
+GENERATED 2023-06-05_07:03:25
+
+Execution times:
+
+./rpj.bun scripts
+- 0:00.04 real
+- 0.02 user
+- 0.01 sys
+
+./rpj.deno scripts
+- 0:00.04 real
+- 0.02 user
+- 0.01 sys
+
+./rpj scripts
+- 0:00.00 real
+- 0.00 user
+- 0.00 sys
+

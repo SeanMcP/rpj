@@ -7,11 +7,19 @@ files=(
   "rpj"
 )
 
-output="GENERATED $(date +%F_%T)\n\nExecutable file sizes:\n"
+rm -f sizes.txt
+
+echo -e "GENERATED $(date +%F_%T)\n\nExecutable file sizes:\n" >>sizes.txt
 
 # iterate over the list of files
 for file in "${files[@]}"; do
-  output="$output\n$(wc -c $file)"
+  echo -e "$(wc -c $file)\n" >>sizes.txt
 done
 
-echo -e $output > sizes.txt
+rm -f times.txt
+
+echo -e "GENERATED $(date +%F_%T)\n\nExecution times:\n" >>times.txt
+
+for file in "${files[@]}"; do
+  /usr/bin/time -f "%C\n- %E real\n- %U user\n- %S sys\n" -a -o times.txt ./$file scripts &>/dev/null
+done

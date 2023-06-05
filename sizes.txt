@@ -1,7 +1,10 @@
-GENERATED 2023-06-01_07:08:19
+GENERATED 2023-06-05_07:03:25
 
 Executable file sizes:
 
 97733752 rpj.bun
-110014625 rpj.deno
+
+109968928 rpj.deno
+
 2607443 rpj
+
