@@ -29,5 +29,5 @@ try {
   const property = fieldMap.get(field) || field;
   console.log(json[property]);
 } catch (e) {
-  handleError(e, "Error parsing package.json");
+  handleError(e, "Invalid package.json file");
 }
